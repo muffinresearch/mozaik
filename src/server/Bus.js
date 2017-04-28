@@ -7,7 +7,7 @@ const logger = require('./logger')
 const API_MODE_POLL          = 'poll'
 const API_MODE_PUSH          = 'push'
 
-const DEFAULT_POLL_INTERVAL  = 15000
+const DEFAULT_POLL_INTERVAL  = 100000
 
 const API_DATA_MESSAGE       = 'api.data'
 const API_ERROR_MESSAGE      = 'api.error'
