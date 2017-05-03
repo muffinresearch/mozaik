@@ -76,9 +76,15 @@ exports.start = _app => {
 
     const port = process.env.PORT || configuration.port
 
-    server.listen(port, configuration.host, () => {
-        logger.info(chalk.yellow(`Mozaïk server listening at http://${configuration.host}:${port}`))
-    })
+    if (configuration.socketPath) {
+        server.listen(configuration.socketPath, () => {
+            logger.info(chalk.yellow(`Mozaïk server listening at ${configuration.socketPath}`))
+        })
+    } else {
+        server.listen(port, configuration.host, () => {
+            logger.info(chalk.yellow(`Mozaïk server listening at http://${configuration.host}:${port}`))
+        })
+    }
 
     socket = SocketIO(server)
     socket.on('connection', client => {
